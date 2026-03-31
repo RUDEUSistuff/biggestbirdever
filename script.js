@@ -7,11 +7,15 @@ function setMode(m) {
     document.getElementById('buttonsContainer').innerHTML = '';
     document.getElementById('threeContainer').innerHTML = '';
     document.getElementById('physicsContainer').innerHTML = '';
+    document.getElementById('calcInput').value = '';
     document.getElementById('result').innerText = '';
     document.getElementById('steps').innerText = '';
+    currentMesh = null;
+
     renderButtons();
-    if (m==='shapes') initThree();
-    if (m==='physics') initPhysics();
+
+    if (mode==='shapes') initThree();
+    if (mode==='physics') initPhysics();
 }
 
 // --- Input handling ---
@@ -54,7 +58,9 @@ function calculate() {
     const input = document.getElementById('calcInput').value;
     let resultText = '', steps='';
     try{
-        let expr = input.replace(/π/g, Math.PI).replace(/\be\b/g, Math.E).replace(/\^/g,'**');
+        let expr = input.replace(/π/g, Math.PI)
+                        .replace(/\be\b/g, Math.E)
+                        .replace(/\^/g,'**');
         let val = eval(expr);
         resultText = 'Result: '+val;
         steps = input+' → '+val;
@@ -114,7 +120,6 @@ function createSlider(labelText,id,min,max,step){
 
 // --- Run Physics Calculation ---
 function runPhysics(){
-    const container = document.getElementById('physicsContainer');
     const vals = {};
     ['mass','acc','dist','time','v0','a','t'].forEach(id=>{
         const el = document.getElementById(id);
@@ -142,7 +147,6 @@ function initThree(){
     animate();
 }
 
-let currentMesh=null;
 function drawShape(name){
     if(!scene) initThree();
     if(currentMesh) scene.remove(currentMesh);
@@ -170,5 +174,5 @@ function animate(){
     if(renderer) renderer.render(scene,camera);
 }
 
-// --- Start ---
-renderButtons();
+// --- Initialize ---
+setMode('math');
