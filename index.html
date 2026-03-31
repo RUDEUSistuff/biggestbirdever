@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Al Harithiya Mega Calculator</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>⚡ Al Harithiya Mega Calculator</h1>
+
+    <!-- Modes -->
+    <div class="mode-switch">
+        <button onclick="setMode('math')">Math</button>
+        <button onclick="setMode('physics')">Physics</button>
+        <button onclick="setMode('shapes')">3D Shapes</button>
+    </div>
+
+    <div id="buttonsContainer"></div>
+
+    <input type="text" id="calcInput" placeholder="Type expression or values...">
+
+    <div id="threeContainer"></div>
+    <div id="physicsContainer"></div>
+
+    <button onclick="calculate()">Calculate</button>
+
+    <p id="result"></p>
+    <p id="steps"></p>
+
+    <p id="madeBy">
+    Made by Ali Saif Ali Mustafa Ahmed Shaheed Amir Ghaith Shawqi, with the assistance of Mustafa Ahmed Khurshid, First Grade A
+    </p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
